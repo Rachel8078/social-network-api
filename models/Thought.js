@@ -1,5 +1,7 @@
 const { Schema, model } = require('mongoose');
 // date format needed
+const { format } = require('date-fns');
+format(new Date(), 'MM/dd/yyyy');
 
 const ReactionSchema = new Schema({
   // set custom id to avoid confusion with parent thought_id
@@ -19,7 +21,7 @@ const ReactionSchema = new Schema({
   createdAt: {
     type: Date,
     default: Date.now,
-    //get: (createdAtVal) => dateFormat(createdAtVal)
+    get: (createdAtVal) => format(createdAtVal, 'MM/dd/yyyy'),
   }
 },
 {
@@ -39,7 +41,7 @@ const ThoughtSchema = new Schema({
   createdAt: {
     type: Date,
     default: Date.now,
-    //get: (createdAtVal) => dateFormat(createdAtVal), // link date format app here
+    get: (createdAtVal) => format(createdAtVal, 'MM/dd/yyyy'),
   }, 
   username: {
       type: String,
@@ -51,7 +53,7 @@ const ThoughtSchema = new Schema({
 {
   toJSON: {
     virtuals: true, 
-    //getters: true
+    getters: true
   }, 
   id: false
 }
