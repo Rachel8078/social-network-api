@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model, Types } = require('mongoose');
 // date format needed
 const { format } = require('date-fns');
 format(new Date(), 'MM/dd/yyyy');
