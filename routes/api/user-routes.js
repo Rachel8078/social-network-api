@@ -17,10 +17,12 @@ router
   .route('/:userId')
   .get(getUserById)
   .put(updateUser)
-  .put(addFriend)
   .delete(deleteUser);
 
-// Set up DELETE friend at /api/users/<userId>/friends/<friendId>
-router.route('/:userId/friends/:friendsId').delete(removeFriend);
+// Set up ADD & DELETE friend at /api/users/<userId>/friends/<friendId>
+router
+.route('/:userId/friends/:friendId')
+.put(addFriend)
+.delete(removeFriend);
 
 module.exports = router;

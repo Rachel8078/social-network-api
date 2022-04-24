@@ -63,6 +63,7 @@ const userController = {
   deleteUser({ params }, res) {
     User.findOneAndDelete({ _id: params.userId })
     .then(dbUserData => {
+      //deleteMany to remove Thoughts when User is deleted
       if(!dbUserData) {
         res.status(404).json({ message: 'No user found with this id' });
         return;
@@ -73,10 +74,10 @@ const userController = {
   }, 
 
   // add a friend to a user
-  addFriend({ params, body }, res) {
+  addFriend({ params }, res) {
     User.findByIdAndUpdate(
       { _id: params.userId },
-      { $push: { friends: body } },
+      { $push: { friends: params.friendId } },
       { new: true, runValidators: true }
     )
     .then((dbUserData) => {
@@ -93,7 +94,7 @@ const userController = {
   removeFriend({ params }, res) {
     User.findOneAndUpdate(
       { _id: params.userId },
-      { $pull: { friends: { friendId: params.friendId } } },
+      { $pull: { friends: params.friendId } },
       { new: true }
     )
     .then((dbUserData) => res.json(dbUserData))
