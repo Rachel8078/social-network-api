@@ -1,7 +1,7 @@
 const { Schema, model, Types } = require('mongoose');
 // date format needed
 const { format } = require('date-fns');
-format(new Date(), 'MM/dd/yyyy');
+// format(new Date(), 'MM/dd/yyyy');
 
 const ReactionSchema = new Schema({
   // set custom id to avoid confusion with parent thought_id
