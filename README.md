@@ -16,7 +16,7 @@ Back-end for a social network site using MongoDB and Mongoose.
 https://github.com/Rachel8078/social-network-api
 
 ## Video Walkthrough Link
-
+https://drive.google.com/file/d/1trCCJlwPUud_X7LKxdtf2tOJc764gDVk/view
 
 ## Contribution
 Made by Rachel Marriott
