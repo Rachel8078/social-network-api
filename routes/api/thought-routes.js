@@ -17,17 +17,15 @@ router
 // POST thought to user by id /api/thoughts/<userId>
 router.route('/:userId').post(createThought)
 
-// GET thought by id, PUT, & DELETE /api/thoughts/<userId/<thoughtId>
+// GET thought by id, PUT, & DELETE /api/thoughts/<userId>/<thoughtId>
 router
-.route('/:thoughtId')
-// .post(createThought)
+.route('/:userId/:thoughtId')
 .get(getThoughtById)
-.put(updateThought)
 .put(addReaction)
+.put(updateThought)
 .delete(deleteThought)
 
-
 // DELETE reactions /api/thoughts/<userId>/<thoughtId>/<reactionId>
-router.route('/:userId/:thoughtId/:reactionId').delete(removeReaction)
+router.route('/:thoughtId/:reactionId').delete(removeReaction)
 
 module.exports = router;
